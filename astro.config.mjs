@@ -14,6 +14,11 @@ export default defineConfig({
     mode: "standalone"
   }),
   vite: {
+    resolve: {
+      alias: {
+        'zone.js/node': 'zone.js/bundles/zone-node.umd.js'
+      }
+    },
     ssr: {
       noExternal: ['@analogjs/**', '@angular/**']
     },
