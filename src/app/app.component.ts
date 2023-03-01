@@ -1,26 +1,20 @@
-import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { json, serverFn$ } from '@tanstack/bling';
-
-const sayHello = serverFn$(() => {
-  console.log('Hello Angular');
-  return json({ test: true });
-});
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'analogjs-root',
   standalone: true,
-  imports: [JsonPipe],
-  template: `
-    <p>app works!!</p>
-
-    {{ data | json }}
-  `
+  imports: [RouterOutlet],
+  template: ` <router-outlet></router-outlet> `,
+  styles: [
+    `
+      :host {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 2rem;
+        text-align: center;
+      }
+    `,
+  ],
 })
-export class AppComponent {
-  data = {};
-
-  ngOnInit() {
-    sayHello(undefined).then(data => this.data = data);
-  }
-}
+export class AppComponent {}

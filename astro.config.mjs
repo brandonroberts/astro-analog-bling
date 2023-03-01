@@ -14,6 +14,9 @@ export default defineConfig({
     mode: "standalone"
   }),
   vite: {
+    ssr: {
+      noExternal: ['@analogjs/**', '@angular/**']
+    },
     plugins: [
       {
         ...start(),
