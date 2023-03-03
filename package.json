@@ -24,7 +24,7 @@
 		"@angular/platform-server": "^15.0.0",
 		"@angular/router": "^15.2.0",
 		"@astrojs/node": "^5.0.4",
-		"@tanstack/bling": "^0.2.1",
+		"@tanstack/bling": "^0.4.0",
 		"astro": "^2.0.15",
 		"front-matter": "^4.0.2",
 		"marked": "^4.2.12",

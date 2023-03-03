@@ -1666,12 +1666,12 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
-"@tanstack/bling@0.2.1", "@tanstack/bling@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@tanstack/bling/-/bling-0.2.1.tgz#4c5bdae85e1c8c24583cf47a1137abe94172a668"
-  integrity sha512-InofCqsI613Wm+GaeGjrcDyUzB4k6DTGyHooNCjZudBiehpWgMXQCM/gx9jupHjDWbBXcbZdQnpXtDOed6KNEw==
+"@tanstack/bling@0.4.0", "@tanstack/bling@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/bling/-/bling-0.4.0.tgz#b46d2e3724f609220837bb9b744dd194ce726444"
+  integrity sha512-EFJSKUsJ9JJK6kIhuJzxxrjHJOt4S5HiRJa+i38gbpWp6acbfvpRBpoecihNgBqk1AVJbpJYH6ObZ4j0B6U2ZA==
   dependencies:
-    "@tanstack/bling" "0.2.1"
+    "@tanstack/bling" "0.4.0"
     "@vitejs/plugin-react" "^3.1.0"
 
 "@types/babel__core@^7.1.19":
