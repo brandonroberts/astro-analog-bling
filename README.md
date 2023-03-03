@@ -15,3 +15,9 @@ yarn dev
 ```
 
 Navigate to http://localhost:3000 in your browser.
+
+## Build
+
+```
+yarn build
+```
