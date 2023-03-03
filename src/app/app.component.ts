@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { json, serverFn$ } from '@tanstack/bling';
+import { json, fetch$ } from '@tanstack/bling';
 import { JsonPipe } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
-const sayHello = serverFn$(() => {
+const sayHello = fetch$(() => {
   console.log('Hello Angular');
   return json({ test: true });
 });
@@ -10,11 +11,13 @@ const sayHello = serverFn$(() => {
 @Component({
   selector: 'analogjs-root',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [JsonPipe, RouterOutlet],
   template: `
     <h2>Analog$ + Bling</h2>
 
     {{ data | json }}
+
+    <router-outlet />
   `,
   styles: [
     `

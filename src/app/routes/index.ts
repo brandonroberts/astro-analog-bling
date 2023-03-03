@@ -1,38 +1,25 @@
-import { Component } from '@angular/core';
+import type { RouteMeta } from '@analogjs/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { fetch$ } from '@tanstack/bling';
+
+export const routeMeta: RouteMeta = {
+  resolve: {
+    loader: () =>
+      fetch$(() => {
+        console.log("I'm on the server");
+        return { count: 5 };
+      }),
+  },
+};
 
 @Component({
   selector: 'app-home',
   standalone: true,
   template: `
-    <div>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo" alt="Vite logo" />
-      </a>
-      <a href="https://angular.io/" target="_blank">
-        <img
-          alt="Angular Logo"
-          class="logo angular"
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
-        />
-      </a>
-    </div>
-
-    <h1>Vite + Angular</h1>
-
     <div class="card">
       <button type="button" (click)="increment()">Count {{ count }}</button>
     </div>
-
-    <p>
-      Check out
-      <a href="https://github.com/analogjs/analog#readme" target="_blank"
-        >Analog</a
-      >, the fullstack meta-framework for Angular powered by Vite!
-    </p>
-
-    <p class="read-the-docs">
-      Click on the Vite and Angular logos to learn more.
-    </p>
   `,
   styles: [
     `
@@ -55,6 +42,11 @@ import { Component } from '@angular/core';
 })
 export default class HomeComponent {
   count = 0;
+  loader = inject(ActivatedRoute).snapshot.data['loader'];
+
+  ngOnInit() {
+    this.count = this.loader.count;
+  }
 
   increment() {
     this.count++;

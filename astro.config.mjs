@@ -14,6 +14,9 @@ export default defineConfig({
     mode: "standalone"
   }),
   vite: {
+    optimizeDeps: {
+      force: true
+    },
     resolve: {
       alias: {
         'zone.js/node': 'zone.js/bundles/zone-node.umd.js'
@@ -26,6 +29,19 @@ export default defineConfig({
       {
         ...start(),
         enforce: 'post'
+      },
+      {
+        name: 'bling-dynamic-import',
+        enforce: 'post',
+        transform(code) {
+          if (/\.ts\?v=(.*?)\//.test(code)) {
+            return {
+              code: code.replaceAll(/\.ts\?v=(.*?)\//g, '.tsx/')
+            }
+          }
+
+          return undefined;
+        }
       }
     ]
   },
