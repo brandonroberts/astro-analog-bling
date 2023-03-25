@@ -5,11 +5,14 @@ import { fetch$ } from '@tanstack/bling';
 
 export const routeMeta: RouteMeta = {
   resolve: {
-    loader: () =>
-      fetch$(() => {
+    loader: () => {
+      const fetcher = fetch$(() => {
         console.log("I'm on the server");
         return { count: 5 };
-      }),
+      })
+
+      return fetcher();
+    }
   },
 };
 
