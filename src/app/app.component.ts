@@ -13,7 +13,7 @@ const sayHello = fetch$(() => {
   standalone: true,
   imports: [JsonPipe, RouterOutlet],
   template: `
-    <h2>Analog$ + Bling</h2>
+    <h2>Analog$ + Bling$</h2>
 
     {{ data | json }}
 

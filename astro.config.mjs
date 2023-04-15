@@ -1,11 +1,51 @@
-import { defineConfig } from 'astro/config';
-
 // https://astro.build/config
+import { defineConfig } from 'astro/config';
+import node from "@astrojs/node";
+
 import analog from "@analogjs/astro-angular";
 import start from '@tanstack/bling/vite';
 
+import { fileURLToPath } from 'url';
+
 // https://astro.build/config
-import node from "@astrojs/node";
+export function astroBling() {
+  let astroConfig;
+  return {
+    name: '',
+
+    hooks: {
+      'astro:config:setup': (config) => {
+      },
+      'astro:config:done': (config) => {
+        astroConfig = config.config
+      },
+      'astro:build:ssr': (config) => {
+        // console.log(astroConfig)
+        let entryClient = fileURLToPath(
+          new URL('./src/app/main.ts', astroConfig.root),
+        );
+
+        (config.manifest)['entry-client'] =
+          config.manifest.entryModules[entryClient]
+      },
+      'astro:build:done': (config) => {},
+      'astro:build:setup': (config) => {
+        if (config.target === 'client') {
+          if (Array.isArray(config.vite.build?.rollupOptions?.input)) {
+            config.vite.build?.rollupOptions?.input.push(
+              'src/app/main.ts',
+            )
+          }
+
+          if (config.vite.build) {
+            config.vite.build.ssrManifest = true
+            config.vite.build.manifest = true
+          }
+        }
+      },
+    },
+  }
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -45,5 +85,5 @@ export default defineConfig({
       }
     ]
   },
-  integrations: [analog()],
+  integrations: [astroBling(), analog()],
 });
