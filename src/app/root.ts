@@ -9,7 +9,7 @@ export const document = () => `
       <base href="/" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-      <link rel="icon" type="image/x-icon" href="/src/favicon.ico" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     </head>
     <body>
       <analogjs-root></analogjs-root>
