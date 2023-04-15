@@ -11,7 +11,8 @@
 	},
 	"dependencies": {
 		"@analogjs/astro-angular": "^0.1.0-beta.6",
-		"@analogjs/router": "^0.1.0-alpha.7",
+		"@analogjs/vite-plugin-angular": "^0.1.0-alpha.29",
+		"@analogjs/router": "^0.2.0-beta.1",
 		"@angular-devkit/build-angular": "^15.0.0",
 		"@angular/animations": "^15.0.0",
 		"@angular/common": "^15.0.0",
@@ -24,7 +25,7 @@
 		"@angular/platform-server": "^15.0.0",
 		"@angular/router": "^15.2.0",
 		"@astrojs/node": "^5.0.4",
-		"@tanstack/bling": "^0.4.0",
+		"@tanstack/bling": "^0.5.0",
 		"astro": "^2.0.15",
 		"front-matter": "^4.0.2",
 		"marked": "^4.2.12",

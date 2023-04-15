@@ -4,7 +4,7 @@ import { enableProdMode } from '@angular/core';
 import { renderApplication } from '@angular/platform-server';
 import { provideFileRouter } from '@analogjs/router';
 import { withEnabledBlockingInitialNavigation } from '@angular/router';
-import { handleEvent, hasHandler } from '@tanstack/bling/server';
+import { handleFetch$, hasHandler } from '@tanstack/bling/server';
 
 import { document } from './root';
 import { AppComponent } from './app.component';
@@ -17,7 +17,7 @@ export const requestHandler = async({ request }: APIContext) => {
   const url = new URL(request.url).pathname;
 
   if (hasHandler(url)) {
-    return handleEvent({
+    return handleFetch$({
       request,
     });
   }
